@@ -10,14 +10,14 @@
 
    <table id="stocks">
       <thead>
-      <tr>
-         <th>Company</th>
-         <th>Symbol</th>
-         <th>Industry</th>
-         <th>Shares (in Billion)</th>
-         <th>Price</th>
-         <th>Beta</th>
-      </tr>
+         <tr>
+            <th>Company</th>
+            <th>Symbol</th>
+            <th>Industry</th>
+            <th>Shares (in Billion)</th>
+            <th>Price</th>
+            <th>Beta</th>
+         </tr>
       </thead>
       <tr>
          <td>Microsoft</td>
@@ -140,6 +140,25 @@
    const rows = table.getElementsByTagName('tr');
 
    let stockData = [];
+   for (let i = 1; i < rows.length; i++) {
+      stockData.push(rows[i].innerHTML.split('\t'));
+   }
+   console.log(stockData);
 
+
+   let stockData_2 = [];
+   const tablesWithoutHeaders = Array.from(rows).slice(1);
+   for (let [index, row] of tablesWithoutHeaders) {
+      stockData_2.push(row.innerText.split('\t'));
+   }
+
+   let outout = '';
+   for (let stock of stockData_2) {
+      const symbol = stock.at(1);
+      const price = stock.at(5);
+      output += `${symbol} is currenty trading at price ${price}\n`;
+   }
+   
 </script>
+
 </html>
