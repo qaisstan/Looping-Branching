@@ -158,7 +158,23 @@
       const price = stock.at(5);
       output += `${symbol} is currenty trading at price ${price}\n`;
    }
-   
+
+   // Map 
+   const marketCaps = new Map();
+   for (const stock of stockData_2) {
+      const name = stock.at(0);
+      const marketCap = Number(stock.at(3)) * Number(stock.at(4));
+      marketCap.set(name, marketCap);
+   }
+
+   const megaCaps = [];
+   const megaCapLimit = 200;
+   for (const company of marketCaps) {
+      if (company[1] >= megaCapLimit) {
+         megaCaps.push(company[0]);
+      }
+   } 
+
 </script>
 
 </html>
