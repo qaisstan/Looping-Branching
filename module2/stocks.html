@@ -173,7 +173,19 @@
       if (company[1] >= megaCapLimit) {
          megaCaps.push(company[0]);
       }
-   } 
+   }
+
+   const lowBetaStocks = stockData_2
+      .filter(e => beta(stock) < 1)
+      .map(stock => `${name(stock)} with Beta ${beta(stock)}`);
+
+   function name(stock) {
+      return stock.at(0);
+   }
+
+   function beta(stock) {
+      return stock.at(5);
+   }
 
 </script>
 
