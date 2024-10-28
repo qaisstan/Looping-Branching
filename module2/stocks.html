@@ -176,7 +176,7 @@
    }
 
    const lowBetaStocks = stockData_2
-      .filter(e => beta(stock) < 1)
+      .filter(e => beta(stock) && beta(stock) < 1)
       .map(stock => `${name(stock)} with Beta ${beta(stock)}`);
 
    function name(stock) {
